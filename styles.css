@@ -4,13 +4,35 @@ body {
     padding: 0;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
 }
 
-main {
+.box {
+    width: 30%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview {
+    border: 2px dashed #aaa;
     padding: 2rem;
+    cursor: pointer;
+}
+
+.image-preview p {
+    margin: 0;
+}
+
+#input-image-preview, #output-image-preview {
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
 }
