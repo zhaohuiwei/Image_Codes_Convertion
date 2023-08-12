@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData();
     formData.append("image", selectedImage);
 
-    const backendUrl = "http://172.28.211.45:5000"; // 您的后端 IP 地址和端口号
+    const backendUrl = "http://http://127.0.0.1:5000"; // 您的后端 IP 地址和端口号
     const generateCodeEndpoint = "/generate_code"; // 后端的生成代码端点
 
     fetch(`${backendUrl}${generateCodeEndpoint}`, {
