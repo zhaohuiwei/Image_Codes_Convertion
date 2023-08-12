@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="box" id="input-box">
-            <input type="file" id="image-input" accept="image/*">
+            <input type="file" id="image-input" accept="image/*" onchange="previewImage(event)">
             <div id="input-image-preview" class="image-preview">
                 <p>Drop an image or select a file</p>
             </div>
