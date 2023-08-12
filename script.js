@@ -23,3 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+function previewImage(event) {
+    const input = event.target;
+    const preview = document.getElementById("input-image-preview");
+    const file = input.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            preview.innerHTML = `<img src="${reader.result}" alt="Preview Image">`;
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        preview.innerHTML = '<p>Drop an image or select a file</p>';
+    }
+}
