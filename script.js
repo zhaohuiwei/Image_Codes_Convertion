@@ -1,28 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const imageInput = document.getElementById("image-input");
-  const outputCode = document.getElementById("output-code");
-
-  imageInput.addEventListener("change", (event) => {
-    const selectedImage = event.target.files[0];
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-
-    const backendUrl = "http://http://127.0.0.1:5000"; // 您的后端 IP 地址和端口号
-    const generateCodeEndpoint = "/generate_code"; // 后端的生成代码端点
-
-    fetch(`${backendUrl}${generateCodeEndpoint}`, {
-      method: "POST",
-      body: formData,
-    })
-    .then(response => response.text())
-    .then(data => {
-      outputCode.value = data;
-    })
-    .catch(error => {
-      console.error("Error uploading image:", error);
-    });
-  });
-});
 function previewImage(event) {
     const input = event.target;
     const preview = document.getElementById("input-image-preview");
@@ -38,5 +13,30 @@ function previewImage(event) {
         reader.readAsDataURL(file);
     } else {
         preview.innerHTML = '<p>Drop an image or select a file</p>';
+    }
+}
+
+function uploadImage() {
+    const input = document.getElementById("image-input");
+    const formData = new FormData();
+
+    if (input.files.length > 0) {
+        formData.append("image", input.files[0]);
+
+        fetch("/generate_code", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            const outputCode = document.getElementById("output-code");
+            outputCode.value = data;
+
+            const outputImagePreview = document.getElementById("output-image-preview");
+            outputImagePreview.innerHTML = `<img src="${data}" alt="Processed Image">`;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
     }
 }
