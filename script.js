@@ -23,7 +23,7 @@ function uploadImage() {
     if (input.files.length > 0) {
         formData.append("image", input.files[0]);
 
-        fetch("/generate_code", {
+        fetch("http://172.28.211.45:5000/generate_code", {
             method: "POST",
             body: formData
         })
